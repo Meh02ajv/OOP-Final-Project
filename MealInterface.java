@@ -5,6 +5,4 @@ public interface MealInterface {
 
     double calculateLandUsage();
 
-    double calculateNitrogenWaste();
-
 }
