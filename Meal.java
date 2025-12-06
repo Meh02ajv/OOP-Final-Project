@@ -58,13 +58,4 @@ public class Meal implements MealInterface {
         }
         return total;
     }
-
-    @Override
-    public double calculateNitrogenWaste() {
-        double total = 0;
-        for (FoodItem item: foodItems) {
-            total += item.getNitrogenWaste();
-        }
-        return total;
-    }
 }
