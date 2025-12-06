@@ -72,7 +72,7 @@ public class Meal implements MealInterface {
     public double calculateTotalCarbonFootprints() {
         double total = 0;
         for (FoodItem item: foodItems) {
-            total += item.getCarbonFootprint();
+            total += item.getCarbon_footprint_per_kg();
         }
         return total;
     }
@@ -86,7 +86,7 @@ public class Meal implements MealInterface {
     public double calculateTotalNitrogenFootprints() {
         double total = 0;
         for (FoodItem item: foodItems) {
-            total += item.getNitrogenFootprint();
+            total += item.getNitrogen_footprint();
         }
         return total;
     }
@@ -110,7 +110,7 @@ public class Meal implements MealInterface {
     public double calculateTotalWaterUsage() {
         double total = 0;
         for (FoodItem item: foodItems) {
-            total += item.getWaterUsage();
+            total += item.getWater_usage_per_kg();
         }
         return total;
     }
@@ -124,7 +124,7 @@ public class Meal implements MealInterface {
     public double calculateLandUsage() {
         double total = 0;
         for (FoodItem item: foodItems) {
-            total += item.getLandUsage();
+            total += item.getLand_use_per_kg();
         }
         return total;
     }
