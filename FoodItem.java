@@ -11,12 +11,12 @@
  */
 public class FoodItem {
     private String name;
-    private double portion_kg;
-    private double carbon_footprint_per_kg;
-    private double water_usage_per_kg;
-    private double land_use_per_kg;
-    private String food_category;
-    private double nitrogen_footprint;
+    private double portionKg;
+    private double carbonFootprintPerKg;
+    private double waterUsagePerKg;
+    private double LandUsePerKg;
+    private String foodCategory;
+    private double nitrogenFootprint;
 
     /**
      * Constructor
@@ -30,9 +30,9 @@ public class FoodItem {
      * @param food_category the category of food (e.g., "Meat", "Legumes", "Dairy")
      * @param nitrogen_footprint nitrogen emissions in grams per kg of food
      */
-    public FoodItem(String name, double portion_kg, double carbon_footprint_per_kg,
-                    double water_usage_per_kg, double land_use_per_kg,
-                    String food_category, double nitrogen_footprint) {
+    public FoodItem(String name, double portionKg, double carbonFootprintPerKg,
+                    double waterUsagePerKg, double landUsePerKg,
+                    String foodCategory, double nitrogenFootprint) {
 
         // Validate and set name
         if (name == null || name.trim().isEmpty()) {
@@ -43,36 +43,36 @@ public class FoodItem {
         }
 
         // Validate and set food category
-        if (food_category == null || food_category.trim().isEmpty()) {
-            this.food_category = "Uncategorized";
+        if (foodCategory == null || foodCategory.trim().isEmpty()) {
+            this.foodCategory = "Uncategorized";
             System.out.println("Warning: Invalid category provided. Set to 'Uncategorized'");
         } else {
-            this.food_category = food_category;
+            this.foodCategory = foodCategory;
         }
 
         // Validate environmental values (set to 0 if negative)
-        this.carbon_footprint_per_kg = (carbon_footprint_per_kg < 0) ? 0 : carbon_footprint_per_kg;
-        if (carbon_footprint_per_kg < 0) {
+        this.carbonFootprintPerKg = (carbonFootprintPerKg < 0) ? 0 : carbonFootprintPerKg;
+        if (carbonFootprintPerKg < 0) {
             System.out.println("Warning: Negative carbon footprint provided. Set to 0");
         }
 
-        this.water_usage_per_kg = (water_usage_per_kg < 0) ? 0 : water_usage_per_kg;
-        if (water_usage_per_kg < 0) {
+        this.waterUsagePerKg = (waterUsagePerKg < 0) ? 0 :waterUsagePerKg;
+        if (waterUsagePerKg< 0) {
             System.out.println("Warning: Negative water usage provided. Set to 0");
         }
 
-        this.land_use_per_kg = (land_use_per_kg < 0) ? 0 : land_use_per_kg;
-        if (land_use_per_kg < 0) {
+        this.landUsePerKg = (landUsePerKg < 0) ? 0 : landUsePerKg;
+        if (landUsePerKg < 0) {
             System.out.println("Warning: Negative land use provided. Set to 0");
         }
 
-        this.nitrogen_footprint = (nitrogen_footprint < 0) ? 0 : nitrogen_footprint;
-        if (nitrogen_footprint < 0) {
+        this.nitrogenFootprint = (nitrogenFootprint < 0) ? 0 : nitrogenFootprint;
+        if (nitrogenFootprint < 0) {
             System.out.println("Warning: Negative nitrogen footprint provided. Set to 0");
         }
 
         //Initialise portion to 0
-        this.portion_kg = 0.0;
+        this.portionKg = 0.0;
     }
 
     // Accessors or Getters
@@ -82,33 +82,33 @@ public class FoodItem {
     }
 
     //Gets the portion size in kilograms.
-    public double getPortion_Kg() {
-        return portion_kg;
+    public double getPortionKg() {
+        return portionKg;
     }
 
     //Gets the carbon footprint per kilogram.
-    public double getCarbon_Footprint_Per_Kg() {
-        return carbon_footprint_per_kg;
+    public double getCarbonFootprintPerKg() {
+        return carbonFootprintPerKg;
     }
 
     //Gets the water usage per kilogram.
-    public double getWater_Usage_Per_Kg() {
-        return water_usage_per_kg;
+    public double getWaterUsagePerKg() {
+        returnwaterUsagePerKg;
     }
 
     //Gets the land use per kilogram
-    public double getLand_Use_Per_Kg() {
-        return land_use_per_kg;
+    public double getLandUsePerKg() {
+        return landUsePerKg;
     }
 
     //Gets the food category.
-    public String getFood_Category() {
-        return food_category;
+    public String getFoodCategory() {
+        return foodCategory;
     }
 
     //Gets the nitrogen footprint per kilogram.
-    public double getNitrogen_Footprint() {
-        return nitrogen_footprint;
+    public double getNitrogenFootprint() {
+        return nitrogenFootprint;
     }
 
     // Setters with validation
@@ -125,10 +125,10 @@ public class FoodItem {
 
     //Sets the portion size in kilograms.
     // Validates that portion is non-negative. Sets to 0 if negative value provided.
-    public void setPortion_Kg(double portion_kg) {
-        if (portion_kg < 0) {
+    public void setPortionKg(double portionkg) {
+        if (portionKg < 0) {
             System.out.println("Warning: Negative portion provided. Setting to 0.");
-            this.portion_kg = 0;
+            this.portionKg = 0;
             return;
         }
         this.portion_kg = portion_kg;
@@ -136,74 +136,74 @@ public class FoodItem {
 
     //Sets the carbon footprint per kilogram.
     // Validates that value is non-negative. Sets to 0 if negative value provided.
-    public void setCarbon_Footprint_Per_Kg(double carbon_footprint_per_kg) {
+    public void setcarbonFootprintPerKg(double carbonFootprintPerKg) {
         if (carbon_footprint_per_kg < 0) {
             System.out.println("Warning: Negative carbon footprint provided. Setting to 0.");
-            this.carbon_footprint_per_kg = 0;
+            this.carbonFootprintPerKg = 0;
             return;
         }
-        this.carbon_footprint_per_kg = carbon_footprint_per_kg;
+        this.carbonFootprintPerKg = carbonFootprintPerKg;
     }
 
     //Sets the water usage per kilogram.
     // Validates that value is non-negative. Sets to 0 if negative value provided.
-    public void setWater_Usage_Per_Kg(double water_usage_per_kg) {
-        if (water_usage_per_kg < 0) {
+    public void setwaterUsagePerKg(double waterUsagePerKg) {
+        if (waterUsagePerKg < 0) {
             System.out.println("Warning: Negative water usage provided. Setting to 0.");
-            this.water_usage_per_kg = 0;
+            this.waterUsagePerKg = 0;
             return;
         }
-        this.water_usage_per_kg = water_usage_per_kg;
+        this.waterUsagePerKg =waterUsagePerKg;
     }
     //Sets the land use per kilogram.
     //Validates that value is non-negative. Sets to 0 if negative value provided.
-    public void setLand_Use_Per_Kg(double land_use_per_kg) {
-        if (land_use_per_kg < 0) {
+    public void setLandUsePerKg(double LandUsePerKg) {
+        if (landUsePerKg < 0) {
             System.out.println("Warning: Negative land use provided. Setting to 0.");
-            this.land_use_per_kg = 0;
+            this.landUsePerKg = 0;
             return;
         }
         this.land_use_per_kg = land_use_per_kg;
     }
     //Sets the food category.
     //Validates that category is not null or empty.
-    public void setFood_Category(String food_category) {
-        if (food_category == null || food_category.trim().isEmpty()) {
+    public void setFoodCategory(String food_category) {
+        if (foodCategory == null || foodCategory.trim().isEmpty()) {
             System.out.println("Warning: Invalid category provided. Category unchanged.");
             return;
         }
-        this.food_category = food_category;
+        this.foodCategory = foodCategory;
     }
     //Sets the nitrogen footprint per kilogram.
     // Validates that value is non-negative. Sets to 0 if negative value provided.
-    public void setNitrogen_Footprint(double nitrogen_footprint) {
-        if (nitrogen_footprint < 0) {
+    public void setNitrogenFootprint(double nitrogenFootprint) {
+        if (nitrogenFootprint < 0) {
             System.out.println("Warning: Negative nitrogen footprint provided. Setting to 0.");
-            this.nitrogen_footprint = 0;
+            this.nitrogenFootprint = 0;
             return;
         }
-        this.nitrogen_footprint = nitrogen_footprint;
+        this.nitrogenFootprint = nitrogenFootprint;
     }
 
     // Calculation methods - calculate total impact based on portion
     //Calculates the total carbon footprint for this food item.
     public double getTotalCarbonFootprint() {
-        return portion_kg * carbon_footprint_per_kg;
+        return portionKg * carbonFootprintPerKg;
     }
 
     //Calculates the total water usage for this food item.
     public double getTotalWaterUsage() {
-        return portion_kg * water_usage_per_kg;
+        return portionKg * waterUsagePerKg;
     }
 
     //Calculates the total land usage for this food item.
     public double getTotalLandUsage() {
-        return portion_kg * land_use_per_kg;
+        return portionKg * landUsePerKg;
     }
 
     //Calculates the total nitrogen footprint for this food item.
     public double getTotalNitrogenFootprint() {
-        return portion_kg * nitrogen_footprint;
+        return portionKg * nitrogenFootprint;
     }
 
     // Returns a string representation of this FoodItem.
@@ -227,23 +227,23 @@ public class FoodItem {
         if (obj == null || getClass() != obj.getClass()) return false;
 
         FoodItem foodItem = (FoodItem) obj;
-        return Double.compare(foodItem.carbon_footprint_per_kg, carbon_footprint_per_kg) == 0 &&
-                Double.compare(foodItem.water_usage_per_kg, water_usage_per_kg) == 0 &&
-                Double.compare(foodItem.land_use_per_kg, land_use_per_kg) == 0 &&
-                Double.compare(foodItem.nitrogen_footprint, nitrogen_footprint) == 0 &&
+        return Double.compare(foodItem.carbonFootprintPerKg, carbonFootprintPerKg) == 0 &&
+                Double.compare(foodItem.waterUsagePerKg, waterUsagePerKg) == 0 &&
+                Double.compare(foodItem.landUsePerKg, landUsePerKg) == 0 &&
+                Double.compare(foodItem.nitrogenFootprint, nitrogenFootprint) == 0 &&
                 name.equals(foodItem.name) &&
-                food_category.equals(foodItem.food_category);
+                food_category.equals(foodItem.foodCategory);
     }
 
     //Generates a hash code for this FoodItem.
     @Override
     public int hashCode(){
         int result = name.hashCode();
-        result = 31 * result + food_category.hashCode();
-        result = 31 * result + Double.hashCode(carbon_footprint_per_kg);
-        result = 31 * result + Double.hashCode(water_usage_per_kg);
-        result = 31 * result + Double.hashCode(land_use_per_kg);
-        result = 31 * result + Double.hashCode(nitrogen_footprint);
+        result = 31 * result + foodCategory.hashCode();
+        result = 31 * result + Double.hashCode(carbonFootprintPerKg);
+        result = 31 * result + Double.hashCode(waterUsagePerKg);
+        result = 31 * result + Double.hashCode(landUsePerKg);
+        result = 31 * result + Double.hashCode(nitrogenFootprint);
         return result;
     }
 }
