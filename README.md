@@ -14,7 +14,7 @@ Our project focuses on estimating the environmental impact of meals, especially 
 
 ​🛠️ Technology Stack 
 
-​- Language: Java (The core language for building the OOP model and logic).
+- Language: Java (The core language for building the OOP model and logic).
 - HTML: to build the structure of the webpage.
 - CSS: to desgin and enhance the webpage's appearance.
 - PHP: to handle the backend contents
