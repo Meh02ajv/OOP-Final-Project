@@ -22,12 +22,15 @@ Our project focuses on estimating the environmental impact of meals, especially 
 
 
 
-How to compile
+🔧 How to Compile
 
 
-Add How to run
+▶️ How to Run
 
-Dependencies + Assumptions
+
+📦 Dependencies & Assumptions
+
+- Gemini Generative API access key should be enabled
 
 
 👥 ​Contributors
