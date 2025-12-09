@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EcoPlate | AI Impact Calculator</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lucide/0.263.1/lucide.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <i data-lucide="leaf" class="logo-icon"></i>
+                <h1>EcoPlate</h1>
+            </div>
+            <p class="subtitle">See the environmental cost of your meal in seconds</p>
+        </header>
+
+        <main>
+            <div class="upload-section" id="drop-zone">
+                <div class="upload-content">
+                    <i data-lucide="upload-cloud" class="upload-icon"></i>
+                    <h2>Upload Food Image</h2>
+                    <p>Drag & drop or click to browse</p>
+                    <input type="file" id="file-input" accept="image/*" hidden>
+                    <button class="btn-primary" onclick="document.getElementById('file-input').click()">Select Photo</button>
+                </div>
+                <div class="preview-container hidden" id="preview-container">
+                    <img id="image-preview" src="" alt="Meal preview">
+                    <button class="btn-icon remove-btn" id="remove-image" title="Remove image">
+                        <i data-lucide="x"></i>
+                    </button>
+                </div>
+            </div>
+
+            <button id="analyze-btn" class="btn-block hidden">
+                <span class="btn-text">Analyze Impact</span>
+                <span class="loader hidden"></span>
+            </button>
+
+            <div id="results-section" class="results-section hidden">
+                <div class="meal-header">
+                    <h2 id="meal-name">Detected Meal</h2>
+                    <span class="badge">AI Analysis</span>
+                </div>
+
+                <div class="metrics-grid">
+                    <div class="metric-card carbon">
+                        <div class="metric-icon">
+                            <i data-lucide="cloud"></i>
+                        </div>
+                        <div class="metric-data">
+                            <span class="metric-value" id="carbon-value">0.0</span>
+                            <span class="metric-unit">kg CO₂e</span>
+                        </div>
+                        <span class="metric-label">Carbon Footprint</span>
+                    </div>
+
+                    <div class="metric-card water">
+                        <div class="metric-icon">
+                            <i data-lucide="droplets"></i>
+                        </div>
+                        <div class="metric-data">
+                            <span class="metric-value" id="water-value">0.0</span>
+                            <span class="metric-unit">Lifers</span>
+                        </div>
+                        <span class="metric-label">Water Usage</span>
+                    </div>
+
+                    <div class="metric-card land">
+                        <div class="metric-icon">
+                            <i data-lucide="map"></i>
+                        </div>
+                        <div class="metric-data">
+                            <span class="metric-value" id="land-value">0.0</span>
+                            <span class="metric-unit">m²</span>
+                        </div>
+                        <span class="metric-label">Land Use</span>
+                    </div>
+                    
+                    <div class="metric-card nitrogen">
+                        <div class="metric-icon">
+                            <i data-lucide="sprout"></i>
+                        </div>
+                        <div class="metric-data">
+                            <span class="metric-value" id="nitrogen-value">0.0</span>
+                            <span class="metric-unit">g N</span>
+                        </div>
+                        <span class="metric-label">Nitrogen Waste</span>
+                    </div>
+                </div>
+
+                <div class="ingredients-list">
+                    <h3>Ingredients Breakdown</h3>
+                    <ul id="ingredients-container">
+                        <!-- Items populated by JS -->
+                    </ul>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="app.js"></script>
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+    </script>
+</body>
+</html>
