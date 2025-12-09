@@ -3,32 +3,32 @@ public interface InterfaceFoodItem {
     String getName();
     void setName(String name);
 
-    double getPortion_kg();
-    void setPortion_kg(double portion_kg);
+    double getPortionKg();
+    void setPortionKg(double portion_kg);
 
-    double getCarbon_footprint_per_kg();
-    void setCarbon_footprint_per_kg(double carbon_footprint_per_kg);
+    double getCarbon_footprintPerKg();
+    void setCarbonFootprintPerKg(double carbonFootprintPerKg);
 
-    double getWater_usage_per_kg();
-    void setWater_usage_per_kg(double water_usage_per_kg);
+    double getWaterUsagePerKg();
+    void setWaterUsagePerKg(double waterUsagePerKg);
 
-    double getLand_usage_per_kg();
-    void setLand_usage_per_kg(double land_usage_per_kg);
+    double getLandUsagePerKg();
+    void setLandUsagePerKg(double landUsagePerKg);
 
-    String getFood_category();
-    void setFood_category(String food_category);
+    String getFoodCategory();
+    void setFoodCategory(String foodCategory);
 
-    double getNitrogen_footprint();
-    void setNitrogen_footprint(double nitrogen_footprint);
+    double getNitrogenFootprint();
+    void setNitrogenFootprint(double nitrogenFootprint);
 
 
     // totals
 //    default double getTotalCarbonFootprint() {
-//        return getPortion_kg() * getCarbon_footprint_per_kg();
+//        return getPortionKg() * getCarbonFootprintPerKg();
 //    }
 //
 //    default double getTotalWaterUsage() {
-//        return getPortion_kg() * getWater_usage_per_kg();
+//        return getPortionKg() * getWaterUsagePerKg();
 //    }
 
 }
