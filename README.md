@@ -5,8 +5,11 @@ Our project focuses on estimating the environmental impact of meals, especially 
 ​✨ Key Features
 
 •	GUI (Frontend): what is displayed for the users
-•	Backend API: what connects the frontend(GUI) with the backend (Java logic).  
+
+•	Backend API: what connects the frontend(GUI) with the backend (Java logic). 
+
 •	Image Recognition Module (Gemini Generative API): external service used to identify food items in the image. 
+
 •	Database: where the data about the food items is stored. 
 
 ​🛠️ Technology Stack 
@@ -21,8 +24,12 @@ Our project focuses on estimating the environmental impact of meals, especially 
 👥 ​Contributors
 
 . Miriam Wepiya Gale
+
 . Haris Tiyumtaba Issah
+
 . Nana Banyin Kwofie
+
 . Sebenemaryam Ashebir Asnake
+
 . Meh Ayite Hariel Elinam Ajavon
 
