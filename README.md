@@ -1,4 +1,5 @@
 ​📌 Project Overview
+
 ​This project is a Java-based application focused on raising awareness about the environmental cost of food consumption. By leveraging Object-Oriented Programming (OOP) principles, the application allows users to build a virtual "Meal" and instantly see its aggregated environmental impact, specifically in terms of carbon footprint and water usage.
 ​The final application will use image recognition (or simulated values based on image input) to estimate the food items added to a meal, providing a modern, intuitive user interface.
 
