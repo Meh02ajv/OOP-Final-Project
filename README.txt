@@ -21,6 +21,15 @@ Our project focuses on estimating the environmental impact of meals, especially 
 - GitHub: for collaboration and code management
 
 
+
+How to compile
+
+
+Add How to run
+
+Dependencies + Assumptions
+
+
 👥 ​Contributors
 
 . Miriam Wepiya Gale
