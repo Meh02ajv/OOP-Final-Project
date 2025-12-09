@@ -1,131 +1,120 @@
-import java.util.Arrays;
+public class Meal implements InterfaceMeal {
+  private FoodPortion[] foodPortions;
+  private String name;
 
-/**
- * Represents a named meal composed of multiple FoodItem instances and
- * provides methods to calculate aggregated environmental footprints
- * (carbon, nitrogen, water) and land usage for the whole meal.
- *
- * <p>Notes:
- * - The constructor performs a defensive (shallow) copy of the provided
- *   FoodItem array to preserve encapsulation.
- * - getFoodItems() returns a defensive (shallow) copy of the internal array.
- * - Arrays.copyOf performs a shallow copy: the returned array is a new array
- *   object, but elements (FoodItem instances) are the same object references.
- *
- * @see FoodItem
- * @see MealInterface
- * @author Sebenemaryam
- * @version 1.1
- */
-public class Meal implements MealInterface {
-    /**
-     * The name of this meal (e.g., "Banku", "Jollof Rice").
-     */
-    private String name;
+  public Meal(String name, FoodPortion[] foodPortions) {
+      this.name = name;
+      this.foodPortions = foodPortions;
+  }
 
-    /**
-     * The array of FoodItem objects that make up the meal.
-     */
-    private FoodItem[] foodItems;
+  public FoodPortion[] getFoodPortions() {
+      return foodPortions;
+  }
 
-    /**
-     * Constructs a Meal with the provided name and food items.
-     *
-     * Note: this constructor does not perform explicit validation — it stores
-     * a defensive shallow copy of the provided array. If foodItems is null,
-     * Arrays.copyOf will throw a NullPointerException.
-     *
-     * @param name the meal name
-     * @param foodItems the array of FoodItem instances that comprise the meal
-     */
-    public Meal(String name, FoodItem[] foodItems) {
-        this.name = name;
-        this.foodItems = Arrays.copyOf(foodItems, foodItems.length);
+  public void setFoodPortions(FoodPortion[] foodPortions) {
+      this.foodPortions = foodPortions;
+  }
+
+  public String getName() {
+      return name;
+  }
+
+  public void setName(String name) {
+      this.name = name;
+  }
+
+  @Override
+  public double calculateTotalFootprints() {
+      double total = 0;
+      if (foodPortions != null) {
+          for (FoodPortion portion : foodPortions) {
+              if (portion != null) {
+                  total += portion.calculateCarbonFootprint();
+              }
+          }
+      }
+      return total;
+  }
+
+  @Override
+  public double calculateTotalWaterUsage() {
+      double total = 0;
+      if (foodPortions != null) {
+          for (FoodPortion portion : foodPortions) {
+              if (portion != null) {
+                  total += portion.calculateWaterUsage();
+              }
+          }
+      }
+      return total;
+  }
+
+  @Override
+  public double calculateLandUsage() {
+      double total = 0;
+      if (foodPortions != null) {
+          for (FoodPortion portion : foodPortions) {
+              if (portion != null) {
+                  total += portion.calculateLandUsage();
+              }
+          }
+      }
+      return total;
+  }
+
+  @Override
+  public double calculateNitrogenWaste() {
+      double total = 0;
+      if (foodPortions != null) {
+          for (FoodPortion portion : foodPortions) {
+              if (portion != null) {
+                  total += portion.calculateNitrogenWaste();
+              }
+          }
+      }
+      return total;
+  }
+  
+  @Override
+  public String toString() {
+    String mealString = "\nMeal: " + this.getName() + "\n";
+      mealString += "Items:\n";
+      for (FoodPortion item : this.getFoodPortions()) {
+          mealString += "- " + item.getFoodItem().getName() + " (" + item.getPortionKg() + "kg)\n";
+      }
+      mealString += "\nCalculations:\n";
+      mealString += String.format("Total Carbon Footprint: %.2f kgCO2e%n", this.calculateTotalFootprints());
+      mealString += String.format("Total Water Usage: %.2f L%n", this.calculateTotalWaterUsage());
+      mealString += String.format("Total Land Usage: %.2f m2%n", this.calculateLandUsage());
+      mealString += String.format("Total Nitrogen Waste: %.2f gN%n", this.calculateNitrogenWaste());
+      return mealString;
+  }
+
+  public String toJson() {
+    StringBuilder json = new StringBuilder();
+    json.append("{\n");
+    json.append("  \"mealName\": \"").append(this.name).append("\",\n");
+    json.append("  \"items\": [\n");
+    
+    for (int i = 0; i < foodPortions.length; i++) {
+        FoodPortion portion = foodPortions[i];
+        json.append("    {\n");
+        json.append("      \"name\": \"").append(portion.getFoodItem().getName()).append("\",\n");
+        json.append("      \"portionKg\": ").append(portion.getPortionKg()).append("\n");
+        json.append("    }");
+        if (i < foodPortions.length - 1) json.append(",");
+        json.append("\n");
     }
-
-    /**
-     * Returns the name of the meal.
-     *
-     * @return the meal name
-     */
-    public String getName() {
-        return name;
-    }
-
-    /**
-     * Returns a defensive (shallow) copy of the internal FoodItem array.
-     *
-     * @return a new array containing the same FoodItem references
-     */
-    public FoodItem[] getFoodItems() {
-        return Arrays.copyOf(foodItems, foodItems.length);
-    }
-
-    // ---------- Calculations ----------
-
-    /**
-     * Calculates the total carbon footprint for the meal by summing each item's carbon footprint.
-     *
-     * @return total carbon footprint
-     */
-    @Override
-    public double calculateTotalCarbonFootprints() {
-        double total = 0;
-        for (FoodItem item: foodItems) {
-            total += item.getCarbonFootprintPerKg();
-        }
-        return total;
-    }
-
-    /**
-     * Calculates the total nitrogen footprint for the meal by summing each item's nitrogen footprint.
-     *
-     * @return total nitrogen footprint
-     */
-    @Override
-    public double calculateTotalNitrogenFootprints() {
-        double total = 0;
-        for (FoodItem item: foodItems) {
-            total += item.getNitrogenFootprint();
-        }
-        return total;
-    }
-
-    /**
-     * Calculates the combined total of carbon and nitrogen footprints.
-     *
-     * @return combined carbon + nitrogen footprints
-     */
-    @Override
-    public double calculateTotalFootprints() {
-        return calculateTotalCarbonFootprints() + calculateTotalNitrogenFootprints();
-    }
-
-    /**
-     * Calculates the total water usage for the meal by summing each item's water usage.
-     *
-     * @return total water usage
-     */
-    @Override
-    public double calculateTotalWaterUsage() {
-        double total = 0;
-        for (FoodItem item: foodItems) {
-            total += item.getWaterUsagePerKg();
-        }
-        return total;
-    }
-
-    /**
-     * Calculates the total land usage for the meal by summing each item's land usage.
-     *
-     * @return total land usage
-     */
-    @Override
-    public double calculateLandUsage() {
-        double total = 0;
-        for (FoodItem item: foodItems) {
-            total += item.getLandUsePerKg();
-        }
-        return total;
-    }
+    
+    json.append("  ],\n");
+    json.append("  \"totals\": {\n");
+    json.append("    \"carbonFootprint\": ").append(String.format("%.2f", calculateTotalFootprints())).append(",\n");
+    json.append("    \"waterUsage\": ").append(String.format("%.2f", calculateTotalWaterUsage())).append(",\n");
+    json.append("    \"landUsage\": ").append(String.format("%.2f", calculateLandUsage())).append(",\n");
+    json.append("    \"nitrogenWaste\": ").append(String.format("%.2f", calculateNitrogenWaste())).append("\n");
+    json.append("  }\n");
+    json.append("}");
+    
+    return json.toString();
+  }
 }
