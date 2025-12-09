@@ -4,9 +4,9 @@ public interface InterfaceFoodItem {
     void setName(String name);
 
     double getPortionKg();
-    void setPortionKg(double portion_kg);
+    void setPortionKg(double portionKg);
 
-    double getCarbon_footprintPerKg();
+    double getCarbonFootprintPerKg();
     void setCarbonFootprintPerKg(double carbonFootprintPerKg);
 
     double getWaterUsagePerKg();
