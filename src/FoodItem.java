@@ -1,22 +1,17 @@
 /**
  * Represents a food item with its environmental impact metrics.
  * 
- * <p>This class stores the base environmental data for a food type, with all
- * values measured per kilogram. It serves as reference data that can be combined
- * with a portion size to calculate actual environmental impact.</p>
+ * This class stores the base environmental data for a food type, with all
+ * values measured per kilogram. It serves as reference data that can be combined with a portion size to calculate actual environmental impact.
  * 
- * <p>Environmental metrics included:</p>
- * <ul>
- *   <li>Carbon footprint (kg CO2 equivalent per kg)</li>
- *   <li>Water usage (liters per kg)</li>
- *   <li>Land use (square meters per kg)</li>
- *   <li>Nitrogen footprint/eutrophication (grams N per kg)</li>
- * </ul>
+ * Environmental metrics included:
+ *   Carbon footprint (kg CO2 equivalent per kg)
+ *   Water usage (liters per kg)
+ *   Land use (square meters per kg)
+ *   Nitrogen footprint/eutrophication (grams N per kg)
  * 
  * @author Environmental Impact Calculator Team
  * @version 1.0
- * @see FoodPortion
- * @see InterfaceFoodItem
  */
 public class FoodItem implements InterfaceFoodItem {
     

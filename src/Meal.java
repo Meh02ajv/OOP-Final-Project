@@ -1,20 +1,11 @@
 /**
  * Represents a meal consisting of multiple food portions.
  * 
- * <p>A meal aggregates multiple {@link FoodPortion} objects and provides methods
- * to calculate the total environmental impact by summing the impacts of all portions.</p>
- * 
- * <p>Example usage:</p>
- * <pre>
- * FoodPortion[] portions = {ricePortion, chickenPortion};
- * Meal dinner = new Meal("Dinner", portions);
- * double totalCarbon = dinner.calculateTotalFootprints();
- * </pre>
+ * A meal aggregates multiple FoodPortion objects and provides methods
+ * to calculate the total environmental impact by summing the impacts of all portions.
  * 
  * @author Environmental Impact Calculator Team
  * @version 1.0
- * @see FoodPortion
- * @see InterfaceMeal
  */
 public class Meal implements InterfaceMeal {
     
@@ -106,7 +97,6 @@ public class Meal implements InterfaceMeal {
     }
 
     /**
-     * Calculates the total land usage of the meal.
      * Sums the land usage of all food portions.
      * 
      * @return Total land usage in square meters
@@ -125,7 +115,6 @@ public class Meal implements InterfaceMeal {
     }
 
     /**
-     * Calculates the total nitrogen waste of the meal.
      * Sums the nitrogen waste of all food portions.
      * 
      * @return Total nitrogen waste in grams
@@ -144,7 +133,7 @@ public class Meal implements InterfaceMeal {
     }
     
     /**
-     * Returns a human-readable string representation of the meal.
+     * Returns a string of the meal.
      * Includes the meal name, all items with portions, and calculated totals.
      * 
      * @return Formatted string with meal details and environmental impact
@@ -165,12 +154,7 @@ public class Meal implements InterfaceMeal {
     }
 
     /**
-     * Converts the meal to a JSON string representation.
-     * 
-     * <p>This method is used by the web server to send meal data to the frontend.
-     * The JSON includes the meal name, all items with their portions, and the
-     * calculated environmental totals.</p>
-     * 
+     * Converts the meal to a JSON string representation that the web app can use.
      * @return JSON string representation of the meal
      */
     public String toJson() {

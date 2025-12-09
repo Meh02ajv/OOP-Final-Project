@@ -10,13 +10,11 @@ import java.net.URI;
 
 /**
  * Handles AI-powered food image analysis using Google's Gemini Vision API.
- * 
- * <p>This class sends food images to Google's Gemini AI for recognition
- * and returns structured JSON with detected food items and portions.</p>
+ * This class sends food images to Google's Gemini AI for recognition
+ * and returns structured JSON with detected food items and portions.
  * 
  * @author Environmental Impact Calculator Team
  * @version 1.0
- * @see EnvironmentalImpactCalculator#createMealFromImage(String)
  */
 public class ImageAnalysis {
     
@@ -25,7 +23,7 @@ public class ImageAnalysis {
 
     /** The Gemini API endpoint URL */
     private static final String GEMINI_API_URL = 
-        "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent";
+        "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent";
 
     /** System prompt with instructions for the AI on how to analyze food images */
     private static final String SYSTEM_PROMPT = """
@@ -106,17 +104,31 @@ public class ImageAnalysis {
     }
 
     /**
-     * Analyzes a food image and returns JSON with detected items.
+     * Analyzes a food image from a file path and returns JSON with detected items.
      * 
      * @param imagePath Path to the image file
      * @return JSON string with detected food items, portions, and confidence scores
      * @throws IOException If the image cannot be read or the API request fails
      */
     public String analyzeImage(String imagePath) throws IOException {
-        // Read and encode the image
         byte[] imageBytes = Files.readAllBytes(Paths.get(imagePath));
-        String base64Image = Base64.getEncoder().encodeToString(imageBytes);
         String mimeType = Files.probeContentType(Paths.get(imagePath));
+        if (mimeType == null) mimeType = "image/jpeg"; // Default fallback
+        
+        return analyzeImage(imageBytes, mimeType);
+    }
+    
+    /**
+     * Analyzes a food image from a byte array definition and returns JSON.
+     * 
+     * @param imageBytes The raw image data in bytes
+     * @param mimeType The MIME type of the image (e.g., "image/jpeg", "image/png")
+     * @return JSON string with detected food items, portions, and confidence scores
+     * @throws IOException If the API request fails
+     */
+    public String analyzeImage(byte[] imageBytes, String mimeType) throws IOException {
+        // Encode the image to Base64
+        String base64Image = Base64.getEncoder().encodeToString(imageBytes);
 
         // Build the JSON request
         String jsonRequest = String.format("""

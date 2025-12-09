@@ -8,21 +8,13 @@ import java.nio.file.Files;
 
 /**
  * A simple HTTP server that provides a REST API for food image analysis.
- * 
- * <p>Endpoints:</p>
- * <ul>
- *   <li>POST /analyze-image - Analyzes a food image and returns JSON</li>
- *   <li>GET / - Serves static files (HTML, CSS, JS)</li>
- * </ul>
- * 
+
  * @author Environmental Impact Calculator Team
  * @version 1.0
- * @see ImageAnalysis
- * @see EnvironmentalImpactCalculator
  */
 public class WebServer {
     
-    /** The underlying HTTP server */
+    /** The HTTP server */
     private HttpServer server;
     
     /** Calculator instance for processing requests */
@@ -58,7 +50,7 @@ public class WebServer {
     
     /**
      * Handles HTTP requests to the /analyze-image endpoint.
-     * Accepts POST requests with an image path and returns meal analysis as JSON.
+     * Accepts POST requests with direct image uploads and returns meal analysis as JSON.
      */
     class ImageAnalysisHandler implements HttpHandler {
         
@@ -79,23 +71,20 @@ public class WebServer {
                 return;
             }
             
-            // Read the request body (image path)
-            BufferedReader reader = new BufferedReader(
-                new InputStreamReader(exchange.getRequestBody())
-            );
-            StringBuilder sb = new StringBuilder();
-            String line;
-            while ((line = reader.readLine()) != null) {
-                sb.append(line);
+            // Get content type from headers (default to jpeg if missing)
+            String mimeType = "image/jpeg";
+            if (exchange.getRequestHeaders().containsKey("Content-Type")) {
+                mimeType = exchange.getRequestHeaders().getFirst("Content-Type");
             }
-            String imagePath = sb.toString().trim();
+            
+            // Read the binary request body
+            InputStream is = exchange.getRequestBody();
+            byte[] imageBytes = is.readAllBytes();
             
             try {
-                // Analyze the image and get meal data
-                Meal meal = calculator.createMealFromImage(imagePath);
+                Meal meal = calculator.createMealFromImage(imageBytes, mimeType);
                 String jsonResponse = meal.toJson();
                 
-                // Send successful response
                 exchange.getResponseHeaders().set("Content-Type", "application/json");
                 exchange.sendResponseHeaders(200, jsonResponse.length());
                 
@@ -104,7 +93,7 @@ public class WebServer {
                 os.close();
                 
             } catch (Exception e) {
-                // Send error response
+                e.printStackTrace(); 
                 String error = "{\"error\": \"" + e.getMessage() + "\"}";
                 exchange.sendResponseHeaders(500, error.length());
                 exchange.getResponseBody().write(error.getBytes());
@@ -144,6 +133,13 @@ public class WebServer {
             
             File file = new File(webRoot + path);
             if (file.exists()) {
+                String contentType = "application/octet-stream";
+                if (path.endsWith(".html")) contentType = "text/html";
+                else if (path.endsWith(".css")) contentType = "text/css";
+                else if (path.endsWith(".js")) contentType = "application/javascript";
+                
+                exchange.getResponseHeaders().set("Content-Type", contentType);
+                
                 byte[] bytes = Files.readAllBytes(file.toPath());
                 exchange.sendResponseHeaders(200, bytes.length);
                 exchange.getResponseBody().write(bytes);

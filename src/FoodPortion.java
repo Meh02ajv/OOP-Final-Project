@@ -1,17 +1,12 @@
 /**
  * Represents a specific portion of a food item.
  * 
- * <p>This class combines a {@link FoodItem} (which stores per-kg environmental data)
- * with a specific portion weight. It provides methods to calculate the actual
- * environmental impact for that specific portion.</p>
- * 
- * <p>For example, if Rice has 4 kg CO2e per kg, and you have a 0.25 kg portion,
- * the carbon footprint would be 4 × 0.25 = 1 kg CO2e.</p>
+ * This class combines a FoodItem (which stores per-kg environmental data)
+ * with a specific portion weight. It provides methods to calculate the actual environmental impact for that specific portion.
+ * For example, if Rice has 4 kg CO2e per kg, and you have a 0.25 kg portion, the carbon footprint would be 4 × 0.25 = 1 kg CO2e.
  * 
  * @author Environmental Impact Calculator Team
  * @version 1.0
- * @see FoodItem
- * @see Meal
  */
 public class FoodPortion {
     
@@ -66,7 +61,6 @@ public class FoodPortion {
 
     /**
      * Calculates the carbon footprint for this specific portion.
-     * Formula: carbonFootprintPerKg × portionKg
      * 
      * @return Carbon footprint in kg CO2 equivalent
      */
@@ -76,7 +70,6 @@ public class FoodPortion {
 
     /**
      * Calculates the water usage for this specific portion.
-     * Formula: waterUsagePerKg × portionKg
      * 
      * @return Water usage in liters
      */
@@ -86,8 +79,6 @@ public class FoodPortion {
 
     /**
      * Calculates the land usage for this specific portion.
-     * Formula: landUsePerKg × portionKg
-     * 
      * @return Land usage in square meters
      */
     public double calculateLandUsage() {
@@ -96,8 +87,6 @@ public class FoodPortion {
 
     /**
      * Calculates the nitrogen waste for this specific portion.
-     * Formula: nitrogenFootprint × portionKg
-     * 
      * @return Nitrogen waste in grams
      */
     public double calculateNitrogenWaste() {

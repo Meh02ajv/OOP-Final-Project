@@ -1,10 +1,9 @@
-/* Modern Color Palette - Flat Design */
 :root {
     --bg-primary: #ffffff;
     --bg-secondary: #f8f9fa;
     --text-primary: #1a1a1a;
     --text-secondary: #666666;
-    --accent: #2ecc71;  /* Fresh green */
+    --accent: #2ecc71;
     --accent-dark: #27ae60;
     --border: #e0e0e0;
     --radius-sm: 8px;
@@ -13,7 +12,6 @@
     --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.05);
     --shadow-md: 0 8px 16px rgba(0, 0, 0, 0.08);
     
-    /* Metric Colors - Solid Flat Colors */
     --color-carbon: #546e7a;
     --color-water: #2980b9;
     --color-land: #8e44ad;
@@ -127,7 +125,6 @@ h1 {
     background-color: black;
 }
 
-/* Image Preview */
 .preview-container {
     position: absolute;
     top: 0;
@@ -165,7 +162,6 @@ h1 {
     transform: scale(1.1);
 }
 
-/* Analyze Button */
 .btn-block {
     width: 100%;
     background-color: var(--accent);
@@ -193,7 +189,6 @@ h1 {
     cursor: not-allowed;
 }
 
-/* Results Section */
 .results-section {
     margin-top: 40px;
     animation: fadeIn 0.4s ease;
@@ -218,7 +213,6 @@ h1 {
     text-transform: uppercase;
 }
 
-/* Metrics Grid - Flat Cards */
 .metrics-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -271,7 +265,6 @@ h1 {
     font-weight: 500;
 }
 
-/* Ingredients List */
 .ingredients-list h3 {
     font-size: 18px;
     margin-bottom: 16px;
@@ -296,7 +289,6 @@ h1 {
     color: var(--text-secondary);
 }
 
-/* Utilities */
 .hidden { display: none !important; }
 
 @keyframes fadeIn {
@@ -304,7 +296,6 @@ h1 {
     to { opacity: 1; transform: translateY(0); }
 }
 
-/* Loader */
 .loader {
     width: 20px;
     height: 20px;
@@ -316,4 +307,59 @@ h1 {
 
 @keyframes spin {
     to { transform: rotate(360deg); }
+}
+
+.context-section {
+    margin-top: 32px;
+    border-top: 1px solid var(--border);
+    padding-top: 24px;
+}
+
+.context-section h3 {
+    font-size: 16px;
+    margin-bottom: 16px;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+    letter-spacing: 0.5px;
+    font-weight: 600;
+}
+
+.context-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 16px;
+}
+
+.context-card {
+    background: #f8f9fa;
+    padding: 16px;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 10px;
+}
+
+.context-icon {
+    color: var(--text-secondary);
+    width: 24px;
+    height: 24px;
+    opacity: 0.8;
+}
+
+.context-card p {
+    font-size: 13px;
+    color: var(--text-secondary);
+    line-height: 1.4;
+    margin: 0;
+}
+
+.context-card strong {
+    color: var(--text-primary);
+    font-weight: 700;
+    display: block;
+    font-size: 15px;
+    margin-top: 2px;
 }

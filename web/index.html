@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EcoPlate | AI Impact Calculator</title>
+    <title>AI Environmental Impact Calculator</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lucide/0.263.1/lucide.min.js"></script>
@@ -12,8 +12,7 @@
     <div class="container">
         <header>
             <div class="logo">
-                <i data-lucide="leaf" class="logo-icon"></i>
-                <h1>EcoPlate</h1>
+                <h1>Environmental Impact Calculator</h1>
             </div>
             <p class="subtitle">See the environmental cost of your meal in seconds</p>
         </header>
@@ -98,14 +97,34 @@
                         <!-- Items populated by JS -->
                     </ul>
                 </div>
+
+                <div class="context-section">
+                    <h3>Did you know?</h3>
+                    <div class="context-grid">
+                        <div class="context-card">
+                            <i data-lucide="car" class="context-icon"></i>
+                            <p>Produces as much CO₂ as driving a car <strong id="car-km">0</strong> km</p>
+                        </div>
+                        <div class="context-card">
+                            <i data-lucide="droplets" class="context-icon"></i>
+                            <p>Uses enough water to fill <strong id="water-buckets">0</strong> buckets</p>
+                        </div>
+                        <div class="context-card">
+                            <i data-lucide="flag" class="context-icon"></i>
+                            <p>Requires <strong id="football-pitch">0</strong> football pitches of land</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </main>
     </div>
 
     <script src="app.js"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
     <script>
-        // Initialize Lucide icons
-        lucide.createIcons();
+        window.onload = function() {
+            lucide.createIcons();
+        };
     </script>
 </body>
 </html>

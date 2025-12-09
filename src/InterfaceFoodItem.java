@@ -1,9 +1,7 @@
 /**
  * Interface defining the contract for food items with environmental impact data.
  * 
- * <p>Any class implementing this interface must provide methods to access and modify
- * the environmental metrics associated with a food item, including carbon footprint,
- * water usage, land use, and nitrogen footprint - all measured per kilogram.</p>
+ * Any class implementing this interface must provide methods to access and modify the environmental metrics associated with a food item, including carbon footprint, water usage, land use, and nitrogen footprint; all measured per kilogram.
  * 
  * @author Environmental Impact Calculator Team
  * @version 1.0

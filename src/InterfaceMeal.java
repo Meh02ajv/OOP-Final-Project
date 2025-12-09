@@ -1,8 +1,7 @@
 /**
  * Interface defining the contract for meal objects.
  * 
- * <p>Provides methods for calculating the total environmental impact of a meal
- * by aggregating the impacts of all food portions it contains.</p>
+ * Provides methods for calculating the total environmental impact of a meal by aggregating the impacts of all food portions it contains.
  * 
  * @author Environmental Impact Calculator Team
  * @version 1.0

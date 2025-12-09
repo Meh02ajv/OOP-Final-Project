@@ -129,8 +129,15 @@ document.addEventListener('DOMContentLoaded', () => {
             container.appendChild(li);
         });
 
+        const carKm = (data.totals.carbonFootprint * 4).toFixed(1);
+        document.getElementById('car-km').textContent = carKm;
+        const buckets = (data.totals.waterUsage / 18).toFixed(1);
+        document.getElementById('water-buckets').textContent = buckets;
+
+        const pitches = (data.totals.landUsage / 7140).toFixed(2);
+        document.getElementById('football-pitch').textContent = pitches;
         resultsSection.classList.remove('hidden');
-        // Smooth scroll to results
+        lucide.createIcons();
         resultsSection.scrollIntoView({ behavior: 'smooth' });
     }
 });
