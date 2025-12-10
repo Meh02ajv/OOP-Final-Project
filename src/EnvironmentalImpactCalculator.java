@@ -32,7 +32,7 @@ public class EnvironmentalImpactCalculator implements FileOperations {
      */
     public EnvironmentalImpactCalculator() {
         this.foodItemDataset = new HashMap<>();
-        this.imageAnalysis = new ImageAnalysis("AIzaSyCSm1PtPf9sO1NkegYYe18U2YS_tXX0GxQ");
+        this.imageAnalysis = new ImageAnalysis("Insert Your Api Key Here");
     }
 
     /**
